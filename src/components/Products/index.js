@@ -12,13 +12,6 @@ import product3 from "../../img/product-3.jpg";
 import product4 from "../../img/product-4.jpg";
 import product5 from "../../img/product-5.jpg";
 
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-} from "react-icons/fa";
-
 import "./style.css";
 
 const Product = () => {
@@ -51,47 +44,37 @@ const Product = () => {
                 <ul className="service-menu">
                   <li className="active">
                     <Link to="/" onClick={onClick}>
-                      Landscape <span>(2376)</span>
+                      headlamps <span>(2376)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Abstract  <span>(237)</span>
+                      disk break <span>(237)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Cartoon <span>(23)</span>
+                      Turbo Oil <span>(23)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Classical <span>(258)</span>
+                      tyre &amp; metal wheel <span>(258)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Decorative <span>(67)</span>
+                      battery <span>(67)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Visual abstract <span>(123)</span>
+                      suspension <span>(123)</span>
                     </Link>
                   </li>
                   <li>
                     <Link to="/" onClick={onClick}>
-                      Folk art <span>(23)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Intellectual abstract <span>(23)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Modern <span>(23)</span>
+                      Shock Absorber <span>(23)</span>
                     </Link>
                   </li>
                 </ul>
@@ -286,30 +269,6 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product1} alt="product 1" />
-                        <div className="hover">
-                          <ul className="social-icon">
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaFacebookF />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaTwitter />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaLinkedinIn />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaInstagram />
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
