@@ -38,8 +38,8 @@ const ServiceList = () => {
                   <h3>{t("city_transfer")}</h3>
                 </Link>
                 <p>
-                  Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                  ipsum dolor consectetur adipiscing elit.
+                  The Basic Package includes a selection of high-quality paintings suitable for home decor.
+                  It offers a variety of styles and themes to enhance your living space.
                 </p>
               </div>
             </div>
