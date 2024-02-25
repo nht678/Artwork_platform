@@ -11,9 +11,7 @@ import product2 from "../../img/product-2.jpg";
 import product3 from "../../img/product-3.jpg";
 import product4 from "../../img/product-4.jpg";
 import product5 from "../../img/product-5.jpg";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Container, Row, Col } from "react-bootstrap";
+
 import {
   FaFacebookF,
   FaTwitter,
@@ -21,9 +19,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 
-import img1 from "../../img/driver-1.jpg";
-import img2 from "../../img/driver-2.jpg";
-import img3 from "../../img/driver-4.jpg";
+import "./style.css";
 
 const Product = () => {
   const { t } = useTranslation();
@@ -202,31 +198,6 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product2} alt="product 1" />
-                        <img src={img3} alt="driver 1" />
-                        <div className="hover">
-                          <ul className="social-icon">
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaFacebookF />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaTwitter />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaLinkedinIn />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaInstagram />
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
@@ -315,6 +286,30 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product1} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaFacebookF />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaTwitter />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaLinkedinIn />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaInstagram />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
