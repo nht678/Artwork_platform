@@ -35,7 +35,7 @@ const Team = () => {
           </Col>
         </Row>
         <Row>
-          <Col lg={4} sm={6}>
+          <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
                 <img src={img1} alt="driver 1" />
@@ -67,14 +67,14 @@ const Team = () => {
               <div className="driver-text">
                 <div className="driver-name">
                   <Link to="/">
-                    <h3>Đặng Minh Nhật</h3>
+                    <h3>Marco Ghaly</h3>
                   </Link>
                   <p>4 {t("year_experience")}</p>
                 </div>
               </div>
             </div>
           </Col>
-          <Col lg={4} sm={6}>
+          <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
                 <img src={img2} alt="driver 1" />
@@ -106,53 +106,14 @@ const Team = () => {
               <div className="driver-text">
                 <div className="driver-name">
                   <Link to="/">
-                    <h3>Thiện</h3>
+                    <h3>Sheref joe</h3>
                   </Link>
                   <p>7 {t("year_experience")}</p>
                 </div>
               </div>
             </div>
           </Col>
-          <Col lg={4} sm={6}>
-            <div className="single-driver">
-              <div className="driver-image">
-                <img src={img2} alt="driver 1" />
-                <div className="hover">
-                  <ul className="social-icon">
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaFacebookF />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaTwitter />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaLinkedinIn />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaInstagram />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="driver-text">
-                <div className="driver-name">
-                  <Link to="/">
-                    <h3>Thiện</h3>
-                  </Link>
-                  <p>7 {t("year_experience")}</p>
-                </div>
-              </div>
-            </div>
-          </Col>
-          <Col lg={4} sm={6}>
+          <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
                 <img src={img3} alt="driver 1" />
@@ -184,14 +145,14 @@ const Team = () => {
               <div className="driver-text">
                 <div className="driver-name">
                   <Link to="/">
-                    <h3>Ngô Thanh Nhật</h3>
+                    <h3>Arafa lep</h3>
                   </Link>
                   <p>3 {t("year_experience")}</p>
                 </div>
               </div>
             </div>
           </Col>
-          <Col lg={4} sm={6}>
+          <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
                 <img src={img4} alt="driver 1" />
@@ -223,7 +184,7 @@ const Team = () => {
               <div className="driver-text">
                 <div className="driver-name">
                   <Link to="/">
-                    <h3>Giang </h3>
+                    <h3>Endly Kent</h3>
                   </Link>
                   <p>4 {t("year_experience")}</p>
                 </div>
