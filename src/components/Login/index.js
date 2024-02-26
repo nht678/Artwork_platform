@@ -1,21 +1,82 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaKey, FaLock, FaUser } from "react-icons/fa";
 
 import "./style.css";
 
+import { toast } from "react-toastify";
+import { UserServices } from "../../services/UserServices"
+import { actUserLogin } from "../../store/user/action";
+
+
+
 const Login = () => {
   const { t } = useTranslation();
 
   const SubmitHandler = (e) => {
     e.preventDefault();
+    UserServices.loginUser(formData)
+      .then((resFetchMe) => {
+        console.log("resFetchMe", resFetchMe);
+        const token = resFetchMe.data.token;
+        const currentUser = resFetchMe.data.userInfo;
+        const role = resFetchMe.data.role;
+        UserServices.fetchMe(token)
+          .then((res) => {
+            console.log("take token", res);
+            dispatch(actUserLogin(currentUser, token, role));
+            toast.success(
+              `Bạn đã đăng nhập với role ${role}. Chào mừng đã vào cổng`
+            );
+            navigate("/");
+          })
+          .catch((err) => alert("Login or password failed"));
+      })
+      .catch((error) => {
+        if (error.response) {
+          toast.error("Server error:", error.response.data);
+        } else if (error.request) {
+          toast.error("Network error:", error.request);
+        } else {
+          toast.error("Error:", error.message);
+        }
+      });
   };
+
+
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+
+  function handleChange(e) {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  }
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onClick = (e) => {
     e.preventDefault();
   };
+
 
   return (
     <section className="gauto-login-area section_70">
@@ -32,7 +93,9 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder={t("login_page.user_email")}
-                    name="username"
+                    name="email"
+                    value={formData?.email}
+                    onChange={handleChange}
                   />
                   <FaUser />
                 </div>
@@ -41,6 +104,8 @@ const Login = () => {
                     type="password"
                     placeholder={t("login_page.password")}
                     name="password"
+                    value={formData?.password}
+                    onChange={handleChange}
                   />
                   <FaLock />
                 </div>
