@@ -12,13 +12,9 @@ import product3 from "../../img/product-3.jpg";
 import product4 from "../../img/product-4.jpg";
 import product5 from "../../img/product-5.jpg";
 
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
+import { MdAdd } from "react-icons/md";
 import "./style.css";
 
 const Product = () => {
@@ -176,6 +172,20 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product1} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
@@ -197,7 +207,21 @@ const Product = () => {
                   <div className="product-item">
                     <div className="product-image">
                       <Link to="/product-single">
-                        <img src={product2} alt="product 1" />
+                        <img src={product2} alt="product 1" /><div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+
                       </Link>
                     </div>
                     <div className="product-text">
@@ -220,6 +244,20 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product3} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
@@ -242,6 +280,20 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product4} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
@@ -264,6 +316,20 @@ const Product = () => {
                     <div className="product-image">
                       <Link to="/product-single">
                         <img src={product5} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
                       </Link>
                     </div>
                     <div className="product-text">
@@ -290,22 +356,12 @@ const Product = () => {
                           <ul className="social-icon">
                             <li>
                               <Link to="/" onClick={onClick}>
-                                <FaFacebookF />
+                                <MdAdd />
                               </Link>
                             </li>
                             <li>
                               <Link to="/" onClick={onClick}>
-                                <FaTwitter />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaLinkedinIn />
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to="/" onClick={onClick}>
-                                <FaInstagram />
+                                <FaHeart />
                               </Link>
                             </li>
                           </ul>

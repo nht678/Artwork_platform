@@ -123,7 +123,10 @@
   color: #ec3323;
   font-weight: 500;
 }
-
+.product-image {
+  position: relative;
+  overflow: hidden;
+}
 .product-image img {
   width: 100%;
 }
