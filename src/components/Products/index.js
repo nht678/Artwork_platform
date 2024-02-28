@@ -12,6 +12,10 @@ import product3 from "../../img/product-3.jpg";
 import product4 from "../../img/product-4.jpg";
 import product5 from "../../img/product-5.jpg";
 
+
+import { FaHeart } from "react-icons/fa";
+
+import { MdAdd } from "react-icons/md";
 import "./style.css";
 
 import axios from 'axios';
@@ -222,6 +226,180 @@ const Product = () => {
           </Col>
           <Col lg={8} sm={12}>
             <div className="product-page-right">
+              <Row>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product1} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to="/product-single">car battery</Link>
+                        </h3>
+                        <p>$180.00</p>
+                      </div>
+                      <div className="product-action">
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product2} alt="product 1" /><div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to="/product-single">Car disk brake</Link>
+                        </h3>
+                        <p>$80.00</p>
+                      </div>
+                      <div className="product-action">
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product3} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to="/product-single">steering wheel</Link>
+                        </h3>
+                        <p>$132.00</p>
+                      </div>
+                      <div className="product-action">
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product4} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to="/product-single">shock absorber</Link>
+                        </h3>
+                        <p>$90.00</p>
+                      </div>
+                      <div className="product-action">
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product5} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to="/product-single">luxury seat</Link>
+                        </h3>
+                        <p>$320.00</p>
+                      </div>
+                      <div className="product-action">
               {/* <Row>
                 {currentProducts.map(product => (
                   <Col key={product.id} md={4} sm={6}>
@@ -231,6 +409,27 @@ const Product = () => {
                           <img src={product1} alt={product.ArtworkName} />
                         </Link>
                       </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md={4} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to="/product-single">
+                        <img src={product1} alt="product 1" />
+                        <div className="hover">
+                          <ul className="social-icon">
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <MdAdd />
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/" onClick={onClick}>
+                                <FaHeart />
+                              </Link>
+                            </li>
+                          </ul>
                       <div className="product-text">
                         <div className="product-title">
                           <h3>
