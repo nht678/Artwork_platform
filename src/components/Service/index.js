@@ -69,7 +69,7 @@ const Service = () => {
             <Slider className="service-slider" {...settings}>
               <div className="slide">
                 <div className="single-service">
-                  <span className="service-number">02 </span>
+                  <span className="service-number">01 </span>
                   <div className="service-icon">
                     <img src={img1} alt="city trasport" />
                   </div>
@@ -78,8 +78,8 @@ const Service = () => {
                       <h3>{t("city_transfer")}</h3>
                     </Link>
                     <p>
-                      The Basic Package includes a selection of high-quality paintings suitable for home decor.
-                      It offers a variety of styles and themes to enhance your living space.
+                      Risus commodo maecenas accumsan lacus vel facilisis. Dorem
+                      ipsum dolor consectetur adipiscing elit.
                     </p>
                   </div>
                 </div>

@@ -7,6 +7,10 @@ import HttpApi from "i18next-http-backend";
 import App from "./main-component/App/App";
 import "./index.css";
 
+import store from "./store/index"; //???
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
 i18n
   .use(initReactI18next)
   .use(LanguageDetector)
@@ -29,7 +33,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Suspense fallback={loadingMarkup}>
     <React.StrictMode>
-      <App />
+      {/* <BrowserRouter> */}
+      <Provider store={store}>
+        <App />
+      </Provider>
+      {/* </BrowserRouter> */}
     </React.StrictMode>
   </Suspense>
 );
