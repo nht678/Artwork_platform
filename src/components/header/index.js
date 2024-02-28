@@ -107,7 +107,8 @@ const Header = () => {
                   <Dropdown.Menu>
                     {profile.map(({ name }) => (
                       <Dropdown.Item key={name}>
-                        <Link to={name === "Profile" ? "/profile" : "/shop"}>
+                        {/* name === "Profile" ? "/profile" : "/shop" */}
+                        <Link to="/profile">
                           {name}
                         </Link>
                       </Dropdown.Item>

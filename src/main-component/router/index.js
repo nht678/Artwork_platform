@@ -18,6 +18,8 @@ import ErrorPage from "../ErrorPage";
 import LoginPage from "../LoginPage";
 import RegisterPage from "../RegisterPage";
 import ContactPage from "../ContactPage";
+//test
+import ProfilePage from "../ProfilePage";
 
 const AllRoute = () => {
   return (
@@ -43,6 +45,8 @@ const AllRoute = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route element={<ErrorPage />} />
+          {/* test */}
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </Router>
     </div>
