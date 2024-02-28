@@ -18,37 +18,12 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 
 const Product = () => {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const SubmitHandler = (e) => {
     e.preventDefault();
   };
 
-  // const onClick = (e) => {
-  //   e.preventDefault();
-  // };
-
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   axios.get('https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/All_Product') // Assuming your API endpoint for fetching all products is '/api/products'
-  //     .then(response => setProducts(response.data))
-  //     .catch(error => console.error('Error fetching product data:', error));
-  // }, []);
-
-  // test phan trang 
-  // const [products, setProducts] = useState([]);
-  // const [pageNumber, setPageNumber] = useState(0);
-  // const itemsPerPage = 9; // Số lượng sản phẩm trên mỗi trang
-  // const pagesVisited = pageNumber * itemsPerPage;
-  // const currentProducts = products.slice(pagesVisited, pagesVisited + itemsPerPage);
-  // const pageCount = Math.ceil(products.length / itemsPerPage);
-
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
-
-  const { t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -58,7 +33,7 @@ const Product = () => {
       .then(response => {
         setProducts(response.data);
         // Lấy danh sách các danh mục từ dữ liệu sản phẩm và loại bỏ các danh mục trùng lặp
-        const uniqueCategories = [...new Set(response.data.map(product => product.cateName))];
+        const uniqueCategories = ['All', ...new Set(response.data.map(product => product.cateName))];
         setCategories(uniqueCategories);
       })
       .catch(error => console.error('Error fetching product data:', error));
@@ -70,7 +45,9 @@ const Product = () => {
   };
 
   // Filter products based on selected category
-  const filteredProducts = selectedCategory ? products.filter(product => product.cateName === selectedCategory) : products;
+  const filteredProducts = selectedCategory ?
+    selectedCategory === 'All' ? products : products.filter(product => product.cateName === selectedCategory)
+    : products;
 
   // Pagination logic
   const [pageNumber, setPageNumber] = useState(0);
@@ -82,6 +59,22 @@ const Product = () => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+
+  // make search 
+  // const [searchTerm, setSearchTerm] = useState('');
+  // const handleSearchChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
+
+  // const filteredProducts = selectedCategory ?
+  //   selectedCategory === 'All' ? products?.filter(product =>
+  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
+  //   ) : products?.filter(product =>
+  //     product.cateName === selectedCategory &&
+  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
+  //   ) : products?.filter(product =>
+  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
   return (
     <section className="gauto-product-page section_70">
       <Container>
@@ -90,59 +83,20 @@ const Product = () => {
             <div className="product-page-left">
               <div className="sidebar-widget">
                 <form className="product_search" onSubmit={SubmitHandler}>
+                  {/* onChange={handleSearchChange} */}
                   <input type="search" placeholder={t("key_words")} />
                   <button type="submit">
                     <FaSearch />
                   </button>
                 </form>
               </div>
-              {/* <div className="sidebar-widget">
-                <h3>{t("by_category")}</h3>
-                <ul className="service-menu">
-                  <li className="active">
-                    <Link to="/" onClick={onClick}>
-                      headlamps <span>(2376)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      disk break <span>(237)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Turbo Oil <span>(23)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      tyre &amp; metal wheel <span>(258)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      battery <span>(67)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      suspension <span>(123)</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" onClick={onClick}>
-                      Shock Absorber <span>(23)</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div> */}
               <div className="sidebar-widget">
                 <h3>{t("by_category")}</h3>
                 <ul className="service-menu">
                   {categories.map(category => (
                     <li key={category} className={selectedCategory === category ? 'active' : ''}>
                       <Link to="/" onClick={() => handleCategoryClick(category)}>
-                        {category} <span>({products.filter(product => product.cateName === category).length})</span>
+                        {category} <span>({category === 'All' ? products.length : products.filter(product => product.cateName === category).length})</span>
                       </Link>
                     </li>
                   ))}
@@ -222,32 +176,6 @@ const Product = () => {
           </Col>
           <Col lg={8} sm={12}>
             <div className="product-page-right">
-              {/* <Row>
-                {currentProducts.map(product => (
-                  <Col key={product.id} md={4} sm={6}>
-                    <div className="product-item">
-                      <div className="product-image">
-                        <Link to="/product-single">
-                          <img src={product1} alt={product.ArtworkName} />
-                        </Link>
-                      </div>
-                      <div className="product-text">
-                        <div className="product-title">
-                          <h3>
-                            <Link to="/product-single">{product.ArtworkName}</Link>
-                          </h3>
-                          <p>{product.price}</p>
-                        </div>
-                        <div className="product-action">
-                          <Link to="/product-single">
-                            <FaShoppingCart />
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                ))}
-              </Row> */}
               <Row>
                 {currentProducts.map(product => (
                   <Col key={product.id} md={4} sm={6}>
@@ -277,7 +205,6 @@ const Product = () => {
               <Row>
                 <Col md={12}>
                   <div className="pagination-box-row">
-                    {/* <p>Page 1 of 6</p> */}
                     <ul className="pagination">
                       <li className="active">
                         <ReactPaginate
@@ -299,7 +226,6 @@ const Product = () => {
                         />
                       </li>
                     </ul>
-
                   </div>
                 </Col>
               </Row>

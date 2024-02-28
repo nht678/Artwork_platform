@@ -10,6 +10,7 @@ import {
   FaSearch,
   FaGlobe,
 } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import MobileMenu from "../../components/MobileMenu";
 
 import Logo from "../../img/logo.png";
@@ -33,6 +34,14 @@ const languages = [
     code: "pt",
     name: "Português",
     country_code: "pt",
+  },
+];
+const profile = [
+  {
+    name: "Profile",
+  },
+  {
+    name: "Shop",
   },
 ];
 
@@ -90,6 +99,24 @@ const Header = () => {
                     ))}
                   </Dropdown.Menu>
                 </Dropdown>
+                <Dropdown style={{ marginLeft: '20px' }}>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <CgProfile />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {profile.map(({ name }) => (
+                      <Dropdown.Item key={name}>
+                        <Link to={name === "Profile" ? "/profile" : "/shop"}>
+                          {name}
+                        </Link>
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+
+
+
               </div>
             </Col>
           </Row>
