@@ -72,7 +72,10 @@ const Product = () => {
     // Lọc sản phẩm theo danh mục được chọn
     setSelectedCategory(category);
   };
-
+  
+  const onClick = (e) => {
+    e.preventDefault();
+  };
   // Filter products based on selected category
   const filteredProducts = selectedCategory ? products.filter(product => product.cateName === selectedCategory) : products;
 
@@ -395,12 +398,19 @@ const Product = () => {
                     <div className="product-text">
                       <div className="product-title">
                         <h3>
-                          <Link to="/product-single">luxury seat</Link>
+                          <Link to="/product-single">shock absorber</Link>
                         </h3>
-                        <p>$320.00</p>
+                        <p>$90.00</p>
                       </div>
                       <div className="product-action">
-              {/* <Row>
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+                {/* <Row>
                 {currentProducts.map(product => (
                   <Col key={product.id} md={4} sm={6}>
                     <div className="product-item">
@@ -445,8 +455,8 @@ const Product = () => {
                       </div>
                     </div>
                   </Col>
-                ))}
-              </Row> */}
+                ))}*/}
+              </Row>
               <Row>
                 {currentProducts.map(product => (
                   <Col key={product.id} md={4} sm={6}>
