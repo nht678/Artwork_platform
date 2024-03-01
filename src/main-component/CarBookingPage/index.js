@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Header from "../../components/header";
 import PageTitle from "../../components/PageTitle";
-import CarBooking from "../../components/CarList";
+import CarBooking from "../../components/CarBooking";
 import Footer from "../../components/Footer";
 
 const CarBookingPage = () => {
