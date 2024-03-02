@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   DatePickerComponent,
@@ -36,6 +36,8 @@ const CarBooking = () => {
     e.preventDefault();
   };
 
+
+
   return (
     <>
       <section className="gauto-car-booking section_70">
@@ -56,26 +58,6 @@ const CarBooking = () => {
                       $50.00<span>/ {t("day")}</span>
                     </h4>
                   </div>
-                  <div className="car-rating">
-                    <ul>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStar />
-                      </li>
-                      <li>
-                        <FaStarHalfAlt />
-                      </li>
-                    </ul>
-                    <p>(123 {t("rating")})</p>
-                  </div>
                 </div>
                 <p>
                   {" "}
@@ -84,50 +66,6 @@ const CarBooking = () => {
                   Maecenas eros enim, tincidunt vel turpis vel,dapibus tempus
                   nulla. Donec vel nulla dui.
                 </p>
-                <div className="car-features clearfix">
-                  <ul>
-                    <li>
-                      <FaCar /> {t("model")}:2017
-                    </li>
-                    <li>
-                      <FaCogs /> {t("automatic")}
-                    </li>
-                    <li>
-                      <FaTachometerAlt /> 20kmpl
-                    </li>
-                    <li>
-                      <FaEmpire /> V-6 Cylinder
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      <FaEye /> GPS Navigation
-                    </li>
-                    <li>
-                      <FaLock /> Anti-Lock Brakes
-                    </li>
-                    <li>
-                      <FaKey /> Remote Keyless
-                    </li>
-                    <li>
-                      <FaDesktop /> Rear-Seat DVD
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      <FaCar /> {t("model")}:2017
-                    </li>
-                    <li>
-                      <FaCogs /> {t("automatic")}
-                    </li>
-                    <li>
-                      <FaTachometerAlt /> 20kmpl
-                    </li>
-                    <li>
-                      <FaEmpire /> V-6 Cylinder
-                    </li>
-                  </ul>
-                </div>
               </div>
             </Col>
           </Row>
@@ -182,59 +120,6 @@ const CarBooking = () => {
                 <div className="single-booking">
                   <h3>{t("car_booking.booking_details")}</h3>
                   <form>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <input type="text" placeholder={t("from_address")} />
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <input type="text" placeholder={t("to_address")} />
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display="Select">1 person</option>
-                            <option>2 person</option>
-                            <option>3 person</option>
-                            <option>4 person</option>
-                            <option>5-10 person</option>
-                          </select>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <select>
-                            <option data-display="Select">1 luggage</option>
-                            <option>2 luggage</option>
-                            <option>3 luggage</option>
-                            <option>4(+) luggage</option>
-                          </select>
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <p>
-                          <DatePickerComponent
-                            id="datepicker"
-                            placeholder={t("journey_date")}
-                          ></DatePickerComponent>
-                        </p>
-                      </Col>
-                      <Col md={6}>
-                        <p>
-                          <TimePickerComponent
-                            id="timepicker"
-                            placeholder={t("journey_time")}
-                          ></TimePickerComponent>
-                        </p>
-                      </Col>
-                    </Row>
                     <Row>
                       <Col md={12}>
                         <p>

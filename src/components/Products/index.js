@@ -32,6 +32,7 @@ const Product = () => {
     axios.get('https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/All_Product')
       .then(response => {
         setProducts(response.data);
+        console.log("all products", response.data);
         // Lấy danh sách các danh mục từ dữ liệu sản phẩm và loại bỏ các danh mục trùng lặp
         const uniqueCategories = ['All', ...new Set(response.data.map(product => product.cateName))];
         setCategories(uniqueCategories);
@@ -59,6 +60,7 @@ const Product = () => {
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
+  console.log("products.ArtworkId", products.ArtworkId);
 
   // make search 
   // const [searchTerm, setSearchTerm] = useState('');
@@ -178,22 +180,23 @@ const Product = () => {
             <div className="product-page-right">
               <Row>
                 {currentProducts.map(product => (
-                  <Col key={product.id} md={4} sm={6}>
+                  <Col key={product.ArtworkId} md={4} sm={6}>
                     <div className="product-item">
                       <div className="product-image">
-                        <Link to="/product-single">
+                        <Link to={`/product-single/${product.ArtworkId}`}>
                           <img src={product1} alt={product.ArtworkName} />
                         </Link>
+
                       </div>
                       <div className="product-text">
                         <div className="product-title">
                           <h3>
-                            <Link to="/product-single">{product.ArtworkName}</Link>
+                            <Link to={`/product-single/${product.ArtworkId}`}>{product.ArtworkName}</Link>
                           </h3>
                           <p>{product.price}</p>
                         </div>
                         <div className="product-action">
-                          <Link to="/product-single">
+                          <Link to={`/product-single/${product.ArtworkId}`}>
                             <FaShoppingCart />
                           </Link>
                         </div>
