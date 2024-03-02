@@ -107,7 +107,7 @@ const AllRoute = () => {
           <Route path="/car-booking" element={<CarBookingPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/product" element={<ProductPage />} />
-          <Route path="/product-single" element={<ProductSinglePage />} />
+          <Route path="/product-single/:id" element={<ProductSinglePage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/blog" element={<BlogPage />} />

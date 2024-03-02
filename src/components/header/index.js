@@ -19,6 +19,7 @@ import clock from "../../img/clock.png";
 import "flag-icon-css/css/flag-icons.min.css";
 import "./style.css";
 
+
 const languages = [
   {
     code: "fr",
@@ -179,10 +180,10 @@ const Header = () => {
                       <Link to="/about">{t("header-navigation.about")}</Link>
                     </li>
                     <li>
-                      <Link to="/" onClick={onClick}>
+                      <Link to="/service">
                         {t("header-navigation.service")}
                       </Link>
-                      <ul>
+                      {/* <ul>
                         <li>
                           <Link to="/service">
                             {t("header-navigation.all_service")}
@@ -193,13 +194,13 @@ const Header = () => {
                             {t("header-navigation.service_details")}
                           </Link>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
                     <li>
-                      <Link to="/" onClick={onClick}>
+                      <Link to="/car-listing" >
                         {t("header-navigation.cars")}
                       </Link>
-                      <ul>
+                      {/* <ul>
                         <li>
                           <Link to="/car-listing">
                             {t("header-navigation.car_listing")}
@@ -210,14 +211,14 @@ const Header = () => {
                             {t("header-navigation.car_booking")}
                           </Link>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/gallery">
                         {t("header-navigation.gallery")}
                       </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.shop")}
                       </Link>
@@ -243,8 +244,8 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.pages")}
                       </Link>
@@ -273,7 +274,7 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to="/contact">
                         {t("header-navigation.contact")}

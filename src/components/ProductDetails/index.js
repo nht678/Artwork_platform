@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import {
@@ -17,6 +17,8 @@ import product3 from "../../img/product-3.jpg";
 
 import "./style.css";
 
+import axios from "axios";
+
 const ProductDetails = () => {
   const { t } = useTranslation();
 
@@ -24,6 +26,24 @@ const ProductDetails = () => {
     e.preventDefault();
   };
 
+  const { id } = useParams();
+  const [Artwork, setArtwork] = useState([]);
+  const [userproduct, setUserProduct] = useState([]);
+  useEffect(() => {
+    axios.get(`https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/${id}`)
+      .then(response => {
+        setArtwork(response);
+        console.log("artwork", response);
+      })
+      .catch(err => console.error('Error fetching product data', err));
+  }, []);
+  // useEffect(() => {
+  //   axios.get(`https://65e2f93488c4088649f51d06.mockapi.io/authentication/${id}`)
+  //     .then((response) => {
+  //       setUserProduct(response);
+  //       console.log("user product", response);
+  //     })
+  // }, []);
   return (
     <>
       <section className="gauto-product-details section_70">
@@ -36,27 +56,7 @@ const ProductDetails = () => {
             </Col>
             <Col lg={6} md={6}>
               <div className="product-details-text">
-                <h3>car disk break</h3>
-                <div className="car-rating">
-                  <ul>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStar />
-                    </li>
-                    <li>
-                      <FaStarHalf />
-                    </li>
-                  </ul>
-                  <p>(123 {t("rating")})</p>
-                </div>
+                <h3>car disk break{Artwork.ArtworkName}</h3>
                 <div className="single-pro-page-para">
                   <p>
                     Cursus mal suada faci lisis. Lorem ipsum dolor.ipsum dolor
@@ -64,14 +64,16 @@ const ProductDetails = () => {
                     ndisse cursus mal suada faci lisis. Lorem ipsum dolor.ipsum
                     dolor sit amet,.Lorem ipsum dolor.ipsum dolor sit amet, cons
                     ectetur elit. Ves tibulum nec odios
+                    {Artwork.Des}
                   </p>
                 </div>
                 <div className="single-shop-price">
+                  <p>Author: </p>
+                  <p>Owner: </p>
+                </div>
+                <div className="single-shop-price">
                   <p>
-                    {t("price")}:<span>$180</span>
-                  </p>
-                  <p className="qnt">
-                    {t("quantity")}:<input defaultValue={1} type="number" />
+                    {t("price")}:<span>$180{Artwork.Price}</span>
                   </p>
                 </div>
                 <div className="single-shop-page-btn">
@@ -112,29 +114,35 @@ const ProductDetails = () => {
             </Col>
           </Row>
           <Row>
-            <Col lg={3} sm={6}>
-              <div className="product-item">
-                <div className="product-image">
-                  <Link to="/product-single">
-                    <img src={product1} alt="product 1" />
-                  </Link>
-                </div>
-                <div className="product-text">
-                  <div className="product-title">
-                    <h3>
-                      <Link to="/product-single">Car disk brake</Link>
-                    </h3>
-                    <p>$80.00</p>
+            {/* {userproducts.map(product => {
+              return (
+                <Col key={product.ArtworkId} lg={3} sm={6}>
+                  <div className="product-item">
+                    <div className="product-image">
+                      <Link to={`/product-single/${product.ArtworkId}`}>
+                        <img src={product1} alt="product 1" />
+                      </Link>
+                    </div>
+                    <div className="product-text">
+                      <div className="product-title">
+                        <h3>
+                          <Link to={`/product-single/${product.ArtworkId}`}>{product.ArtworkName}</Link>
+                        </h3>
+                        <p>${product.price}</p>
+                      </div>
+                      <div className="product-action">
+                        <Link to="/product-single">
+                          <FaShoppingCart />
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  <div className="product-action">
-                    <Link to="/product-single">
-                      <FaShoppingCart />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={3} sm={6}>
+                </Col>
+              );
+            })} */}
+
+
+            {/* <Col lg={3} sm={6}>
               <div className="product-item">
                 <div className="product-image">
                   <Link to="/product-single">
@@ -199,7 +207,7 @@ const ProductDetails = () => {
                   </div>
                 </div>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </section>
