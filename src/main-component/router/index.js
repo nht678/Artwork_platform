@@ -81,6 +81,8 @@ import LoginPage from "../LoginPage";
 import RegisterPage from "../RegisterPage";
 import ContactPage from "../ContactPage";
 import ProfilePage from "../ProfilePage";
+//test admin
+import UserScreen from '../TestAdmin/UserScreen';
 
 // Layouts
 // import DashboardLayout from "../AdminPage/src/layouts/dashboard";
@@ -117,6 +119,10 @@ const AllRoute = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          {/* test */}
+          <Route path="/users" element={<UserScreen />} />
+          {/* <Route path="/dashboard" element={<DashBoardScreen />} />
+          <Route path="/shops" element={<ShopScreen />} /> */}
 
           {/* Tuyến đường cho admin với Lazy Loading và Suspense */}
           {/* <Route path="/admin/*" element={
