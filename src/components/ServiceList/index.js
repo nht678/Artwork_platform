@@ -15,6 +15,7 @@ import "./style.css";
 const ServiceList = () => {
   const { t } = useTranslation();
 
+
   return (
     <section className="gauto-service-area service-page-area section_70">
       <Container>
@@ -31,16 +32,22 @@ const ServiceList = () => {
             <div className="single-service">
               <span className="service-number">01 </span>
               <div className="service-icon">
-                <img src={img1} alt="city trasport" />
+                <img src={img3} alt="hospital trasport" />
               </div>
               <div className="service-text">
                 <Link to="/service-single">
-                  <h3>{t("city_transfer")}</h3>
+                  <h3>{t("Become a creater")}</h3>
                 </Link>
                 <p>
                   Risus commodo maecenas accumsan lacus vel facilisis. Dorem
                   ipsum dolor consectetur adipiscing elit.
                 </p>
+                <div className="recent-text">
+                  <p>$78.60</p>
+                </div>
+                <a href="http://localhost:8888/order/create_payment_url?amount=30000" className="gauto-btn">
+                  Buy now
+                </a>
               </div>
             </div>
           </Col>
@@ -48,84 +55,22 @@ const ServiceList = () => {
             <div className="single-service">
               <span className="service-number">02 </span>
               <div className="service-icon">
-                <img src={img2} alt="airport trasport" />
-              </div>
-              <div className="service-text">
-                <Link to="/service-single">
-                  <h3>{t("air_transfer")}</h3>
-                </Link>
-                <p>
-                  Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                  ipsum dolor consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="single-service">
-              <span className="service-number">03 </span>
-              <div className="service-icon">
-                <img src={img3} alt="hospital trasport" />
-              </div>
-              <div className="service-text">
-                <Link to="/service-single">
-                  <h3>{t("hospital_transfer")}</h3>
-                </Link>
-                <p>
-                  Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                  ipsum dolor consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="single-service">
-              <span className="service-number">04 </span>
-              <div className="service-icon">
                 <img src={img4} alt="wedding trasport" />
               </div>
               <div className="service-text">
                 <Link to="/service-single">
-                  <h3>{t("wedding_ceremony")}</h3>
+                  <h3>{t("Resell the paintings")}</h3>
                 </Link>
                 <p>
                   Risus commodo maecenas accumsan lacus vel facilisis. Dorem
                   ipsum dolor consectetur adipiscing elit.
                 </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="single-service">
-              <span className="service-number">05 </span>
-              <div className="service-icon">
-                <img src={img5} alt="wedding trasport" />
-              </div>
-              <div className="service-text">
-                <Link to="/service-single">
-                  <h3>{t("city_tour")}</h3>
-                </Link>
-                <p>
-                  Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                  ipsum dolor consectetur adipiscing elit.
-                </p>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div className="single-service">
-              <span className="service-number">06 </span>
-              <div className="service-icon">
-                <img src={img6} alt="wedding trasport" />
-              </div>
-              <div className="service-text">
-                <Link to="/service-single">
-                  <h3> {t("baggage_transport")}</h3>
-                </Link>
-                <p>
-                  Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                  ipsum dolor consectetur adipiscing elit.
-                </p>
+                <div className="recent-text">
+                  <p>$4.60</p>
+                  <a href="http://localhost:8888/order/create_payment_url?amount=200000" className="gauto-btn">
+                    Buy now
+                  </a>
+                </div>
               </div>
             </div>
           </Col>

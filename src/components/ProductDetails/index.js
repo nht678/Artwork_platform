@@ -75,9 +75,9 @@ const ProductDetails = () => {
                   </p>
                 </div>
                 <div className="single-shop-page-btn">
-                  <Link to="/cart" className="gauto-btn">
+                  <button to="/cart" className="gauto-btn">
                     <FaShoppingCart /> {t("add_to_cart")}
-                  </Link>
+                  </button>
                   <ul>
                     <li>
                       <Link to="/" onClick={onClick}>

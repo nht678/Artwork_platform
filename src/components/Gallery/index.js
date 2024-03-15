@@ -24,7 +24,7 @@ const Gallery = () => {
           <Col lg={4} sm={6}>
             <div className="single-gallery">
               <div className="img-holder">
-                <img src={img1} alt="gallery 1" />
+                <img src={img1} alt="gallery 1" />N
                 <div className="overlay-content">
                   <div className="inner-content">
                     <div className="title-box">

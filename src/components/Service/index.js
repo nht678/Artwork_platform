@@ -77,10 +77,6 @@ const Service = () => {
                     <Link to="/service-single">
                       <h3>{t("city_transfer")}</h3>
                     </Link>
-                    <p>
-                      Risus commodo maecenas accumsan lacus vel facilisis. Dorem
-                      ipsum dolor consectetur adipiscing elit.
-                    </p>
                   </div>
                 </div>
               </div>
