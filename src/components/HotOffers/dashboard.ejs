@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/public/css/forms.css" />
+    <link rel="stylesheet" href="/public/css/product.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/public/css/main.css" />
+  </head>
+  <body>
+    <%- include("../includes/navigation.ejs")%>
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Course Name</th>
+          <th scope="col">Course Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(courses.length > 0) { %> <% for(var i = 0; i < courses.length;
+        i++) { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= courses[i].courseName %></td>
+          <td><%= courses[i].courseDescription %></td>
+          <td>
+            <a href="/course/update/<%= courses[i]._id%>"
+              ><button class="btn btn-primary">Update</button></a
+            >
+            <form action="/course/delete/<%= courses[i]._id %>" method="POST">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                onclick="return confirmDelete()"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% } %> <% } else { %>
+        <tr>
+          <td colspan="4">No Course Found</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function confirmDelete() {
+      if (confirm("Are you sure you want to delete this course?")) {
+        // Call the function to delete the course
+        deleteCourse();
+      }
+    }
+  </script>
+</html>

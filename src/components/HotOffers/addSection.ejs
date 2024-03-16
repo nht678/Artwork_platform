@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/public/css/main.css" />
+  </head>
+  <body>
+    <%- include("../includes/navigation.ejs")%>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <form
+            action="<%=  typeof section !== 'undefined' ? '/course/updateSection/' + section._id : '/course/addSection' %>"
+            method="POST"
+            class="form-group"
+          >
+            <div>
+              <label for="sectionName">Section Name:</label>
+              <input
+                type="text"
+                id="sectionName"
+                name="sectionName"
+                required
+                class="form-control"
+                value="<%= typeof section !== 'undefined' ? section.sectionName : '' %>"
+              />
+            </div>
+
+            <div>
+              <label for="sectionDescription">Section Description:</label>
+              <input
+                type="text"
+                id="sectionDescription"
+                name="sectionDescription"
+                required
+                class="form-control"
+                value="<%= typeof section !== 'undefined' ? section.sectionDescription : '' %>"
+              />
+            </div>
+
+            <div>
+              <label for="duration">Duration:</label>
+              <input
+                type="number"
+                id="duration"
+                name="duration"
+                required
+                class="form-control"
+                value="<%= typeof section !== 'undefined' ? section.duration : '' %>"
+              />
+            </div>
+
+            <div>
+              <label for="isMainTask">Is Main Task:</label>
+              <input type="checkbox" id="isMainTask" name="isMainTask" <%=
+              typeof section !== 'undefined' && section.isMainTask ?'checked' : '' %>/>
+            </div>
+
+            <div>
+              <label for="course">Course:</label>
+              <select id="course" name="course" class="form-control">
+                <% courses.forEach(course => { %>
+                  <option value="<%= course._id %>" <%= typeof section !== 'undefined' && section.course._id === course._id ? 'selected' : '' %>>
+                  <%= course.courseName %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">
+              <%= typeof section !== 'undefined' ? 'Update Section' : 'Add Section' %>
+            </button>
+          </form>
+
+          <% if (typeof error !== 'undefined' && error !== null) { %>
+          <p><%= error %></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</html>
