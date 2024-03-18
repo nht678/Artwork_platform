@@ -74,7 +74,7 @@ const CarBooking = () => {
       <section className="gauto-booking-form section_70">
         <Container>
           <Row>
-            <Col lg={8}>
+            <Col lg={12}>
               <div className="booking-form-left">
                 <div className="single-booking">
                   <h3>{t("car_booking.personal_information")}</h3>
@@ -88,14 +88,14 @@ const CarBooking = () => {
                           />
                         </p>
                       </Col>
-                      <Col md={6}>
+                      {/* <Col md={6}>
                         <p>
                           <input
                             type="text"
                             placeholder={t("car_booking.last_name")}
                           />
                         </p>
-                      </Col>
+                      </Col> */}
                     </Row>
                     <Row>
                       <Col md={6}>
@@ -134,7 +134,7 @@ const CarBooking = () => {
                 </div>
               </div>
             </Col>
-            <Col lg={4}>
+            {/* <Col lg={4}>
               <div className="booking-right">
                 <h3>{t("car_booking.payment_method")}</h3>
                 <div className="gauto-payment clearfix">
@@ -182,7 +182,7 @@ const CarBooking = () => {
                   </Link>
                 </div>
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </section>

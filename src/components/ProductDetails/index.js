@@ -26,24 +26,49 @@ const ProductDetails = () => {
     e.preventDefault();
   };
 
+
+
   const { id } = useParams();
+  // nen them status
   const [Artwork, setArtwork] = useState([]);
   const [userproduct, setUserProduct] = useState([]);
+  const [userID, setUserID] = useState(null);
   useEffect(() => {
     axios.get(`https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/${id}`)
       .then(response => {
         setArtwork(response);
         console.log("artwork", response);
+        const fetchedUserID = response.data.userID;
+        setUserID(fetchedUserID)
       })
       .catch(err => console.error('Error fetching product data', err));
   }, []);
   // useEffect(() => {
-  //   axios.get(`https://65e2f93488c4088649f51d06.mockapi.io/authentication/${id}`)
+  //   axios.get(`https://65e2f93488c4088649f51d06.mockapi.io/authentication/${userID}`)
   //     .then((response) => {
   //       setUserProduct(response);
   //       console.log("user product", response);
   //     })
   // }, []);
+  // order
+  // const ArtworkButton = ({ artwork }) => {
+  //   const handleClick = () => {
+  //     const { id, status } = artwork;
+  //     // Call API here with artwork ID and status
+  //     axios.post("your_api_endpoint", { id, status })
+  //       .then(response => {
+  //         // Handle success response
+  //         const Updatestatus = response.status;
+  //         setArtwork(...Artwork, Updatestatus);
+  //         console.log("Artwork status updated successfully:", response.data);
+  //       })
+  //       .catch(error => {
+  //         // Handle error response
+  //         console.error("Error updating artwork status:", error);
+  //       });
+  //   };
+  // }
+
   return (
     <>
       <section className="gauto-product-details section_70">
@@ -68,14 +93,41 @@ const ProductDetails = () => {
                   </p>
                 </div>
                 <div className="single-shop-price">
-                  <p>Author: </p>
-                  <p>Owner: </p>
+                  <p>Author: {Artwork.author} </p>
+                  <p>Owner:{Artwork.Owner} </p>
                 </div>
                 <div className="single-shop-price">
                   <p>
                     {t("price")}:<span>$180{Artwork.Price}</span>
                   </p>
                 </div>
+                {/* <div className="single-shop-page-btn">
+                  <button className="gauto-btn">
+                    <FaShoppingCart /> Order
+                  </button>
+                  <button className="gauto-btn" onClick={handleClick}>
+                    <FaShoppingCart />Order
+                    {artwork.status}
+                  </button>
+
+                  <ul>
+                    <li>
+                      <Link to="/" onClick={onClick}>
+                        <FaFacebook />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/" onClick={onClick}>
+                        <FaTwitter />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/" onClick={onClick}>
+                        <FaInstagram />
+                      </Link>
+                    </li>
+                  </ul>
+                </div> */}
                 <div className="single-shop-page-btn">
                   <Link to="/cart" className="gauto-btn">
                     <FaShoppingCart /> {t("add_to_cart")}
@@ -114,7 +166,7 @@ const ProductDetails = () => {
             </Col>
           </Row>
           <Row>
-            {/* {userproducts.map(product => {
+            {/* {userproduct.map(product => {
               return (
                 <Col key={product.ArtworkId} lg={3} sm={6}>
                   <div className="product-item">

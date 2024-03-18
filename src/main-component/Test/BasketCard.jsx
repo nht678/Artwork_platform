@@ -1,0 +1,64 @@
+import './styles/BasketCard.css';
+import {useEffect, useState} from "react";
+import {XMarkIcon} from "@heroicons/react/24/solid/index.js";
+import {Link} from "react-router-dom";
+import {Spinner} from "flowbite-react";
+import {displayPrice, fetchPainting, getImage} from "../utils/artUtils.jsx";
+
+function BasketCard({ artID, onRemove }) {
+
+    const [painting, setPainting] = useState({});
+    const [imageSrc, setImageSrc] = useState("");
+
+    useEffect(() => {
+        fetchPainting(artID).then((res) => { setPainting(res.data[0]); });
+        getImage(artID).then((res) => { setImageSrc(res); });
+    }, [artID]);
+
+    return (
+        <div className="basket-card">
+            <div className="basket-card-content">
+                {
+                    (JSON.stringify(painting) === "{}" || imageSrc === "")
+                        ?
+                        <div className="my-auto flex grow items-center justify-center">
+                            <Spinner className="h-16 w-16 text-cara-white fill-cara-violet"/>
+                        </div>
+
+                        :
+                        <>
+
+                            <Link to={"/artwork/" + painting["artID"]}>
+                                <div className="basket-card-image">
+                                    <img src={imageSrc} alt={painting["name"]} className="hover-raise" />
+                                </div>
+                            </Link>
+                            <div className="basket-card-info">
+                                <h3>{painting["name"]}</h3>
+                                <p>({painting["width"]} x {painting["height"]} mm)</p>
+                                <p>Estimated completion date: {new Date(painting["completionDate"]).toDateString()}</p>
+                            </div>
+                            <div className="basket-card-cost">
+                                {
+                                    painting["purchased"] === 1
+                                        ? <h2 className="text-cara-failure">Already Sold</h2>
+                                        : <h2>{displayPrice(painting["price"])}</h2>
+                                }
+
+                            </div>
+
+                        </>
+                }
+            </div>
+            <div className="basket-card-remove">
+                <div className="hover-raise hover:scale-110 cursor-pointer" onClick={onRemove}>
+                    <XMarkIcon className="w-12"/>
+                </div>
+            </div>
+        </div>
+
+    )
+
+}
+
+export default BasketCard;

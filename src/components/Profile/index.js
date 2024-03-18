@@ -2,11 +2,12 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Container, Row } from "reactstrap";
 // import "../style/account-user.css";
 // import "../style/change-password.css";
-
+import "./change-password.css"
+import "./style.css"
 import axios from "axios";
 import logo from "./images/account-circle-line.png";
 import Alert from "@mui/material/Alert";
-// import ChangePassword from "./Auth/ChangePassword";
+import ChangePassword from "./ChangePassword";
 // import { updateUser } from "./redux/apiRequest";
 // import { useDispatch } from "react-redux";
 
@@ -42,17 +43,17 @@ const AccountUser = () => {
     });
     useEffect(() => {
         const defaultInputStates = {
-            userName: userData.userName !== "",
-            email: userData.email !== "",
-            phone: userData.phone !== "",
-            dob: userData.dob !== "",
-            gender: userData.gender !== "",
-            address: userData.address !== "",
-            password: userData.password !== "",
+            userName: userData?.userName !== "",
+            email: userData?.email !== "",
+            phone: userData?.phone !== "",
+            dob: userData?.dob !== "",
+            gender: userData?.gender !== "",
+            address: userData?.address !== "",
+            password: userData?.password !== "",
         };
         setInputStates(defaultInputStates);
     }, [userData]);
-    const accessToken = localStorage.getItem("jwtToken");
+    const accessToken = localStorage.getItem("ACCESS_TOKEN");
 
     useEffect(() => {
         axios
@@ -187,7 +188,7 @@ const AccountUser = () => {
                                             type="text"
                                             className="form-control"
                                             id="userName"
-                                            value={userData.userName}
+                                            value={userData?.userName}
                                             onBlur={(e) =>
                                                 handleInputBlur("userName", e.target.value)
                                             }
@@ -210,7 +211,7 @@ const AccountUser = () => {
                                             type="email"
                                             className="form-control"
                                             id="email"
-                                            value={userData.email}
+                                            value={userData?.email}
                                             onBlur={(e) => handleInputBlur("email", e.target.value)}
                                             onChange={(e) =>
                                                 setUserData({ ...userData, email: e.target.value })
@@ -231,7 +232,7 @@ const AccountUser = () => {
                                             type="text"
                                             className="form-control"
                                             id="phone"
-                                            value={userData.phone}
+                                            value={userData?.phone}
                                             onBlur={(e) => handleInputBlur("phone", e.target.value)}
                                             onChange={(e) =>
                                                 setUserData({ ...userData, phone: e.target.value })
@@ -252,7 +253,7 @@ const AccountUser = () => {
                                             type="datetime-local"
                                             className="form-control"
                                             id="dob"
-                                            value={userData.dob}
+                                            value={userData?.dob}
                                             onBlur={(e) => handleInputBlur("dob", e.target.value)}
                                             onChange={(e) =>
                                                 setUserData({ ...userData, dob: e.target.value })
@@ -275,7 +276,7 @@ const AccountUser = () => {
                                             <select
                                                 className="form-control"
                                                 id="gender"
-                                                value={userData.gender}
+                                                value={userData?.gender}
                                                 onBlur={(e) =>
                                                     handleInputBlur("gender", e.target.value)
                                                 }
@@ -295,12 +296,12 @@ const AccountUser = () => {
                                     </div>
                                 </div>
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    {/* {showPasswordForm && (
+                                    {showPasswordForm && (
                                         <ChangePassword
                                             onCancelPasswordForm={() => setShowPasswordForm(false)}
                                             onPasswordChanged={handlePasswordChanged} // Kiểm tra xem hàm onPasswordChanged đã được truyền vào ChangePassword chưa
                                         />
-                                    )} */}
+                                    )}
                                     <div className="form-group">
                                         <label>Mật khẩu</label>
                                         <div className="d-flex">
@@ -336,7 +337,7 @@ const AccountUser = () => {
                                         className="form-control"
                                         id="address"
                                         rows="3"
-                                        value={userData.address}
+                                        value={userData?.address}
                                         onBlur={(e) => handleInputBlur("address", e.target.value)}
                                         onChange={(e) =>
                                             setUserData({ ...userData, address: e.target.value })
