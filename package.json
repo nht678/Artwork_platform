@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/style": "^0.8.0",
+    "@emotion/styled": "^11.11.0",
+    "@faker-js/faker": "^8.4.1",
+    "@iconify/react": "^4.1.1",
+    "@mui/lab": "^5.0.0-alpha.166",
+    "@mui/material": "^5.0.0-rc.1",
     "@syncfusion/ej2-react-calendars": "^20.2.40",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -28,8 +35,10 @@
     "node-fetch": "^2.6.9",
     "qs": "^6.7.0",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.4",
     "react-i18next": "^11.18.3",
     "react-icons": "^4.4.0",
     "react-paginate": "^8.2.0",
@@ -38,14 +47,9 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "react-toastify": "^10.0.4",
+    "reactstrap": "^9.2.2",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "request": "^2.88.2",
-    "serve-favicon": "^2.4.5",
-    "set-tz": "^0.2.0",
-    "sha256": "^0.2.0",
-    "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -74,6 +78,5 @@
   "description": "1. Cài đặt nodejs lên máy cần chạy. Download nodejs tại: https://nodejs.org/en/\r 2. Vào command (cmd) và chuyển tới thư mục code demo\r 3. Cài đặt module cần thiết bằng lệnh: npm install\r 4. Cấu hình giá trị cho các tham số: vnp_TmnCode,vnp_HashSecret trong file\\vnpay_nodejs\\config\\default.json. Nếu chưa có các thông tin này, vui lòng liên hệ với VNPAY\r 5. Chạy ứng dụng: npm start app.js. Ứng dụng sẽ start ở port 8888.\r 6. Mở trình duyệt và truy cập vào địa chỉ: http://localhost:8888 để bắt đầu chạy demo\r 7. Thông tin hướng dẫn kết nối tham khảo thêm tại địa chỉ: https://sandbox.vnpayment.vn/apis/",
   "main": "app.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": ""
 }

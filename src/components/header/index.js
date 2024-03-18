@@ -10,6 +10,7 @@ import {
   FaSearch,
   FaGlobe,
 } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import MobileMenu from "../../components/MobileMenu";
 
 import Logo from "../../img/logo.png";
@@ -17,6 +18,7 @@ import globe from "../../img/globe.png";
 import clock from "../../img/clock.png";
 import "flag-icon-css/css/flag-icons.min.css";
 import "./style.css";
+
 
 const languages = [
   {
@@ -33,6 +35,14 @@ const languages = [
     code: "pt",
     name: "Português",
     country_code: "pt",
+  },
+];
+const profile = [
+  {
+    name: "Profile",
+  },
+  {
+    name: "Shop",
   },
 ];
 
@@ -90,6 +100,25 @@ const Header = () => {
                     ))}
                   </Dropdown.Menu>
                 </Dropdown>
+                <Dropdown style={{ marginLeft: '20px' }}>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <CgProfile />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {profile.map(({ name }) => (
+                      <Dropdown.Item key={name}>
+                        {/* name === "Profile" ? "/profile" : "/shop" */}
+                        <Link to="/profile">
+                          {name}
+                        </Link>
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+
+
+
               </div>
             </Col>
           </Row>
@@ -151,10 +180,10 @@ const Header = () => {
                       <Link to="/about">{t("header-navigation.about")}</Link>
                     </li>
                     <li>
-                      <Link to="/" onClick={onClick}>
+                      <Link to="/service">
                         {t("header-navigation.service")}
                       </Link>
-                      <ul>
+                      {/* <ul>
                         <li>
                           <Link to="/service">
                             {t("header-navigation.all_service")}
@@ -165,13 +194,13 @@ const Header = () => {
                             {t("header-navigation.service_details")}
                           </Link>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
                     <li>
-                      <Link to="/" onClick={onClick}>
+                      <Link to="/car-listing" >
                         {t("header-navigation.cars")}
                       </Link>
-                      <ul>
+                      {/* <ul>
                         <li>
                           <Link to="/car-listing">
                             {t("header-navigation.car_listing")}
@@ -182,14 +211,14 @@ const Header = () => {
                             {t("header-navigation.car_booking")}
                           </Link>
                         </li>
-                      </ul>
+                      </ul> */}
                     </li>
-                    <li>
+                    {/* <li>
                       <Link to="/gallery">
                         {t("header-navigation.gallery")}
                       </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.shop")}
                       </Link>
@@ -215,8 +244,8 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link to="/" onClick={onClick}>
                         {t("header-navigation.pages")}
                       </Link>
@@ -245,7 +274,7 @@ const Header = () => {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     <li>
                       <Link to="/contact">
                         {t("header-navigation.contact")}

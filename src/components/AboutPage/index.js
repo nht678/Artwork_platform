@@ -21,16 +21,10 @@ const AboutPage = () => {
                 <h4>{t("about_page.subtitle")}</h4>
                 <h3>{t("about_page.title")}</h3>
                 <p>
-                  Claritas est etiam processus dynamicus, qui sequitur
-                  mutationem consuetudi- um lectorum. Mirum est notare quam
-                  littera gothica, quam nunc putamus parum claram, anteposuerit
-                  litterarum formas humanitatis per seacula quarta decima et
-                  quinta decima.
+                  We are dedicated to providing exceptional art experiences by providing unique and high-quality paintings. We believe that art has the magical power to create connection and bring joy to people.
                 </p>
                 <p>
-                  Eodem modo typi, qui nunc nobis videntur parum clari, fiant
-                  sollemnes in futurum.litterarum formas humanitatis per seacula
-                  quarta decima et quinta decima
+                  Join us to experience the beauty of art through each painting! Explore and enjoy the richness and creativity that art paintings bring.
                 </p>
                 <div className="about-page-call">
                   <div className="page-call-icon">
