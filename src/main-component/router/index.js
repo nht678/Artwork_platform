@@ -83,6 +83,10 @@ import ContactPage from "../ContactPage";
 import ProfilePage from "../ProfilePage";
 //test admin
 import UserScreen from '../TestAdmin/UserScreen';
+// make shop
+import MainProduct from '../Creator/MainProduct'
+import ProductEditScreen from '../Creator/ProductEditScreen'
+import AddProduct from "../Creator/AddProduct"
 
 // Layouts
 // import DashboardLayout from "../AdminPage/src/layouts/dashboard";
@@ -94,6 +98,7 @@ import UserScreen from '../TestAdmin/UserScreen';
 // const AdminBlogPage = lazy(() => import("../AdminPage/src/pages/blog"));
 // const AdminLoginPage = lazy(() => import("../AdminPage/src/pages/login"));
 // const AdminPage404 = lazy(() => import("../AdminPage/src/pages/page-not-found"));
+//
 
 const AllRoute = () => {
   return (
@@ -143,6 +148,25 @@ const AllRoute = () => {
           {/* Nếu không tìm thấy tuyến đường, hiển thị trang lỗi */}
           {/* <Route path="*" element={<ErrorPage />} />  */}
           {/* <Route path="/admin" element={<DashboardLayout />} /> */}
+          {/* <Route path="/manageshop" element={<PrivateRouter component={HomeScreen} />} /> */}
+          <Route path="/products" element={<MainProduct />} />
+          {/* <Route path="/category" element={<PrivateRouter component={CategoriesScreen} />} />
+          <Route path="/orders" element={<PrivateRouter component={OrderScreen} />} />
+          <Route path="/order/:id" element={<PrivateRouter component={OrderDetailScreen} />} />
+         
+          <Route path="/product/:id/edit" element={<PrivateRouter component={ProductEditScreen} />} /> */
+          }
+          <Route path="/product/:id/edit" element={<ProductEditScreen />} />
+          <Route path="/addproduct" element={<AddProduct />} />
+          {/* {
+            user.role === 'AD' && (
+              <>
+                <Route path="/users" element={<UserScreen />} />
+                <Route path="/dashboard" element={<DashBoardScreen />} />
+                <Route path="/shops" element={<ShopScreen />} />
+              </>
+            )
+          } */}
         </Routes>
       </Router>
     </div>
