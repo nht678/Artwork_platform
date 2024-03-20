@@ -7,7 +7,7 @@ import HttpApi from "i18next-http-backend";
 import App from "./main-component/App/App";
 import "./index.css";
 
-import store from "./store/index"; //???
+import store from "./store/index"; //
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
