@@ -127,25 +127,26 @@ const Header = () => {
       <header className="gauto-main-header-area">
         <Container>
           <Row>
-            <Col md={3}>
+            <Col md={4} style={{ display: 'flex', alignItems: 'center' }}>
               <div className="site-logo">
                 <a href="/">
-                  <img src={Logo} alt="gauto" />
+                  <img src={Logo} alt="gauto" style={{ width: '100px', height: '80px' }} />
                 </a>
               </div>
+              <h1 style={{ margin: '0', marginLeft: '10px', color: '#6f42c1' }}>PAINTPALLET</h1>
             </Col>
-            <Col lg={6} sm={9}>
+            <Col lg={5} sm={9}>
               <div className="header-promo">
                 <div className="single-header-promo">
                   <div className="header-promo-icon">
                     <img src={globe} alt="globe" />
                   </div>
                   <div className="header-promo-info">
-                    <h3>Newyork, USA</h3>
-                    <p>{t("melbourne_city")}</p>
+                    <h3>HO CHI MINH, VIETNAM</h3>
+                    <p>{t("Thu_Duc_city")}</p>
                   </div>
                 </div>
-                <div className="single-header-promo">
+                {/* <div className="single-header-promo">
                   <div className="header-promo-icon">
                     <img src={clock} alt="clock" />
                   </div>
@@ -153,7 +154,7 @@ const Header = () => {
                     <h3>Monday to Friday</h3>
                     <p>9:00am - 6:00pm</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </Col>
             <div className="col-lg-3">

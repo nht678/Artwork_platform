@@ -14,69 +14,72 @@ import product5 from "../../img/product-5.jpg";
 
 import "./style.css";
 
-import axios from 'axios';
-import ReactPaginate from 'react-paginate';
+import axios from "axios";
+import ReactPaginate from "react-paginate";
 
 const Product = () => {
   const { t } = useTranslation();
 
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-  };
-
+  const [pageCount, setPageCount] = useState(0);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [artworkParams, setArtworkParams] = useState({
+    size: 9,
+    page: 1,
+    name: null,
+    price: null,
+    status: null,
+    categoryName: null,
+  });
 
+  // useeffect đang bị nhân lên 2 lần
   useEffect(() => {
-    axios.get('https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/All_Product')
-      .then(response => {
-        setProducts(response.data);
-        console.log("all products", response.data);
-        // Lấy danh sách các danh mục từ dữ liệu sản phẩm và loại bỏ các danh mục trùng lặp
-        const uniqueCategories = ['All', ...new Set(response.data.map(product => product.cateName))];
-        setCategories(uniqueCategories);
-      })
-      .catch(error => console.error('Error fetching product data:', error));
-  }, []);
+    fetchCategories();
+    fetchProducts();
+  }, [artworkParams]);
 
-  const handleCategoryClick = (category) => {
-    // Lọc sản phẩm theo danh mục được chọn
-    setSelectedCategory(category);
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7130/api/v1/artworks",
+        {
+          params: artworkParams,
+        }
+      );
+      setProducts(response.data.items);
+      setPageCount(response.data.totalPages);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
   };
 
-  // Filter products based on selected category
-  const filteredProducts = selectedCategory ?
-    selectedCategory === 'All' ? products : products.filter(product => product.cateName === selectedCategory)
-    : products;
+  /**
+   * @description: Fetch categories from API
+   * @param: {any}
+   */
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(
+        "https://localhost:7130/api/v1/categories"
+      );
+      setCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
 
-  // Pagination logic
-  const [pageNumber, setPageNumber] = useState(0);
-  const itemsPerPage = 9;
-  const pagesVisited = pageNumber * itemsPerPage;
-  const currentProducts = filteredProducts.slice(pagesVisited, pagesVisited + itemsPerPage);
-  const pageCount = Math.ceil(filteredProducts.length / itemsPerPage);
+  const handleCategoryClick = (categoryName) => {
+    setSelectedCategory(categoryName);
+    setArtworkParams({ ...artworkParams, categoryName: categoryName });
+    fetchProducts();
+  };
 
   const changePage = ({ selected }) => {
-    setPageNumber(selected);
+    setArtworkParams({ ...artworkParams, page: selected + 1 });
+    fetchProducts();
   };
-  console.log("products.ArtworkId", products.ArtworkId);
 
-  // make search 
-  // const [searchTerm, setSearchTerm] = useState('');
-  // const handleSearchChange = (e) => {
-  //   setSearchTerm(e.target.value);
-  // };
-
-  // const filteredProducts = selectedCategory ?
-  //   selectedCategory === 'All' ? products?.filter(product =>
-  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
-  //   ) : products?.filter(product =>
-  //     product.cateName === selectedCategory &&
-  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
-  //   ) : products?.filter(product =>
-  //     product.ArtworkName.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
   return (
     <section className="gauto-product-page section_70">
       <Container>
@@ -84,8 +87,7 @@ const Product = () => {
           <Col lg={4} sm={12}>
             <div className="product-page-left">
               <div className="sidebar-widget">
-                <form className="product_search" onSubmit={SubmitHandler}>
-                  {/* onChange={handleSearchChange} */}
+                <form className="product_search">
                   <input type="search" placeholder={t("key_words")} />
                   <button type="submit">
                     <FaSearch />
@@ -95,10 +97,19 @@ const Product = () => {
               <div className="sidebar-widget">
                 <h3>{t("by_category")}</h3>
                 <ul className="service-menu">
-                  {categories.map(category => (
-                    <li key={category} className={selectedCategory === category ? 'active' : ''}>
-                      <Link to="/" onClick={() => handleCategoryClick(category)}>
-                        {category} <span>({category === 'All' ? products.length : products.filter(product => product.cateName === category).length})</span>
+                  {categories.map((category) => (
+                    <li
+                      key={category["name"]}
+                      className={
+                        selectedCategory === category["name"] ? "active" : ""
+                      }
+                    >
+                      <Link
+                        to="/"
+                        onClick={() => handleCategoryClick(category["name"])}
+                      >
+                        {category["name"]}{" "}
+                        <span>({category["totalProduct"]})</span>
                       </Link>
                     </li>
                   ))}
@@ -179,24 +190,25 @@ const Product = () => {
           <Col lg={8} sm={12}>
             <div className="product-page-right">
               <Row>
-                {currentProducts.map(product => (
-                  <Col key={product.ArtworkId} md={4} sm={6}>
+                {products.map((product) => (
+                  <Col key={product.idArtwork} md={4} sm={6}>
                     <div className="product-item">
                       <div className="product-image">
-                        <Link to={`/product-single/${product.ArtworkId}`}>
-                          <img src={product1} alt={product.ArtworkName} />
+                        <Link to={`/product-single/${product.idArtwork}`}>
+                          <img src={product1} alt={product.name} />
                         </Link>
-
                       </div>
                       <div className="product-text">
                         <div className="product-title">
                           <h3>
-                            <Link to={`/product-single/${product.ArtworkId}`}>{product.ArtworkName}</Link>
+                            <Link to={`/product-single/${product.idArtwork}`}>
+                              {product.name}
+                            </Link>
                           </h3>
                           <p>{product.price}</p>
                         </div>
                         <div className="product-action">
-                          <Link to={`/product-single/${product.ArtworkId}`}>
+                          <Link to={`/product-single/${product.idArtwork}`}>
                             <FaShoppingCart />
                           </Link>
                         </div>
@@ -216,16 +228,16 @@ const Product = () => {
                           onPageChange={changePage}
                           pageCount={pageCount}
                           previousLabel="<"
-                          pageClassName='page-item'
-                          pageLinkClassName='page-link'
-                          previousClassName='page-item'
-                          previousLinkClassName='page-link'
-                          nextClassName='page-item'
-                          nextLinkClassName='page-link'
-                          breakClassName='page-item'
-                          breakLinkClassName='page-link'
-                          containerClassName='pagination'
-                          activeClassName='active'
+                          pageClassName="page-item"
+                          pageLinkClassName="page-link"
+                          previousClassName="page-item"
+                          previousLinkClassName="page-link"
+                          nextClassName="page-item"
+                          nextLinkClassName="page-link"
+                          breakClassName="page-item"
+                          breakLinkClassName="page-link"
+                          containerClassName="pagination"
+                          activeClassName="active"
                         />
                       </li>
                     </ul>

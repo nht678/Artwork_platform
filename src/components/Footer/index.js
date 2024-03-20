@@ -11,7 +11,7 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 
-import logo from "../../img/footer-logo.png";
+import logo from "../../img/logo.png";
 import img1 from "../../img/post-thumb-3.jpg";
 import img2 from "../../img/post-thumb-2.jpg";
 import img3 from "../../img/post-thumb-1.jpg";
@@ -37,9 +37,11 @@ const Footer = () => {
             <Col lg={4}>
               <div className="single-footer">
                 <div className="footer-logo">
-                  <Link to="/">
-                    <img src={logo} alt="footer-logo" />
+                  <Link to="/" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+                    <img src={logo} alt="footer-logo" style={{ width: '100px', height: '80px', display: 'inline-block', verticalAlign: 'middle' }} />
+                    <h1 style={{ margin: '0', color: '#6f42c1', display: 'inline-block', verticalAlign: 'middle' }}>PAINTPALLET</h1>
                   </Link>
+
                 </div>
                 <p>
                   sed do eiusmod tempor incididunt ut labore et dolore magna as

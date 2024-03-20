@@ -9,10 +9,8 @@ import { FaKey, FaLock, FaUser } from "react-icons/fa";
 import "./style.css";
 
 import { toast } from "react-toastify";
-import { UserServices } from "../../services/UserServices"
+import { UserServices } from "../../services/UserServices";
 import { actUserLogin } from "../../store/user/action";
-
-
 
 const Login = () => {
   const { t } = useTranslation();
@@ -22,19 +20,20 @@ const Login = () => {
     UserServices.loginUser(formData)
       .then((resFetchMe) => {
         console.log("resFetchMe", resFetchMe);
-        const token = resFetchMe.data.token;
+        const token = resFetchMe.data.accessToken;
         const currentUser = resFetchMe.data.userInfo;
-        const role = resFetchMe.data.role;
-        UserServices.fetchMe(token)
-          .then((res) => {
-            console.log("take token", res);
-            dispatch(actUserLogin(currentUser, token, role));
-            toast.success(
-              `Bạn đã đăng nhập với role ${role}. Chào mừng đã vào cổng`
-            );
-            navigate("/");
-          })
-          .catch((err) => alert("Login or password failed"));
+        const role = currentUser.role;
+        dispatch(actUserLogin(currentUser, token, role));
+        toast.success(
+          `Bạn đã đăng nhập với role ${role}. Chào mừng đã vào cổng`
+        );
+        navigate("/");
+        // UserServices.fetchMe(token)
+        //   .then((res) => {
+        //     console.log("take token", res);
+
+        //   })
+        //   .catch((err) => alert("Login or password failed"));
       })
       .catch((error) => {
         if (error.response) {
@@ -47,13 +46,10 @@ const Login = () => {
       });
   };
 
-
-
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
-
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -77,7 +73,6 @@ const Login = () => {
     e.preventDefault();
   };
 
-
   return (
     <section className="gauto-login-area section_70">
       <Container>
@@ -93,8 +88,8 @@ const Login = () => {
                   <input
                     type="text"
                     placeholder={t("login_page.user_email")}
-                    name="email"
-                    value={formData?.email}
+                    name="username"
+                    value={formData?.username}
                     onChange={handleChange}
                   />
                   <FaUser />
