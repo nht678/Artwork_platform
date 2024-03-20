@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaPhoneAlt } from "react-icons/fa";
 
-import img1 from "../../img/about-page.jpg";
-import img2 from "../../img/cars.png";
+import img1 from "../../img/pexels-matheus-bertelli-8533826.jpg";
+import img2 from "../../img/pexels-pixabay-459799.jpg";
 
 import "./style.css";
 
@@ -41,7 +41,7 @@ const AboutPage = () => {
             </Col>
             <Col lg={6}>
               <div className="about-page-right">
-                <img src={img1} alt="about page" />
+                <img src={img1} alt="about page" style={{ width: '550px', height: '420px' }} />
               </div>
             </Col>
           </Row>
@@ -66,7 +66,7 @@ const AboutPage = () => {
           <Row>
             <Col md={12}>
               <div className="about-promo-image">
-                <img src={img2} alt="about promo" />
+                <img src={img2} alt="about promo" style={{ width: '1704px', height: '501px' }} />
               </div>
             </Col>
           </Row>

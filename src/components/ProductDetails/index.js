@@ -6,14 +6,9 @@ import {
   FaFacebook,
   FaInstagram,
   FaShoppingCart,
-  FaStar,
-  FaStarHalf,
   FaTwitter,
 } from "react-icons/fa";
-import img1 from "../../img/cart-1.png";
 import product1 from "../../img/product-2.jpg";
-import product2 from "../../img/product-1.jpg";
-import product3 from "../../img/product-3.jpg";
 
 import "./style.css";
 
@@ -24,50 +19,32 @@ const ProductDetails = () => {
 
   const onClick = (e) => {
     e.preventDefault();
+    try {
+      let response = axios.post(
+        `https://localhost:7130/artworks/order/${artwork.idArtwork}`
+      );
+      console.log(response);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
   };
 
-
-
   const { id } = useParams();
-  // nen them status
-  const [Artwork, setArtwork] = useState([]);
-  const [userproduct, setUserProduct] = useState([]);
-  const [userID, setUserID] = useState(null);
+  const [artwork, setArtwork] = useState([]);
   useEffect(() => {
-    axios.get(`https://65dc58f6e7edadead7ebb035.mockapi.io/authentication/${id}`)
-      .then(response => {
-        setArtwork(response);
-        console.log("artwork", response);
-        const fetchedUserID = response.data.userID;
-        setUserID(fetchedUserID)
-      })
-      .catch(err => console.error('Error fetching product data', err));
+    fetchArtworkDetail();
   }, []);
-  // useEffect(() => {
-  //   axios.get(`https://65e2f93488c4088649f51d06.mockapi.io/authentication/${userID}`)
-  //     .then((response) => {
-  //       setUserProduct(response);
-  //       console.log("user product", response);
-  //     })
-  // }, []);
-  // order
-  // const ArtworkButton = ({ artwork }) => {
-  //   const handleClick = () => {
-  //     const { id, status } = artwork;
-  //     // Call API here with artwork ID and status
-  //     axios.post("your_api_endpoint", { id, status })
-  //       .then(response => {
-  //         // Handle success response
-  //         const Updatestatus = response.status;
-  //         setArtwork(...Artwork, Updatestatus);
-  //         console.log("Artwork status updated successfully:", response.data);
-  //       })
-  //       .catch(error => {
-  //         // Handle error response
-  //         console.error("Error updating artwork status:", error);
-  //       });
-  //   };
-  // }
+
+  const fetchArtworkDetail = async () => {
+    try {
+      let response = await axios.get(
+        `https://localhost:7130/api/Product/${id}`
+      );
+      setArtwork(response.data);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  };
 
   return (
     <>
@@ -76,190 +53,38 @@ const ProductDetails = () => {
           <Row>
             <Col lg={6} md={6}>
               <div className="product-details-image">
-                <img src={img1} alt="product" />
+                <img
+                  src={
+                    artwork.imageLists && artwork.imageLists.length
+                      ? artwork.imageLists[0].imageUrl
+                      : product1
+                  }
+                  alt="product 1"
+                />
               </div>
             </Col>
             <Col lg={6} md={6}>
               <div className="product-details-text">
-                <h3>car disk break{Artwork.ArtworkName}</h3>
+                <h3>{artwork.name}</h3>
                 <div className="single-pro-page-para">
-                  <p>
-                    Cursus mal suada faci lisis. Lorem ipsum dolor.ipsum dolor
-                    sit amet, cons ectetur elit. Ves tibulum nec odios Suspe
-                    ndisse cursus mal suada faci lisis. Lorem ipsum dolor.ipsum
-                    dolor sit amet,.Lorem ipsum dolor.ipsum dolor sit amet, cons
-                    ectetur elit. Ves tibulum nec odios
-                    {Artwork.Des}
-                  </p>
+                  <p>{artwork.Des}</p>
                 </div>
                 <div className="single-shop-price">
-                  <p>Author: {Artwork.author} </p>
-                  <p>Owner:{Artwork.Owner} </p>
+                  <p>Author: {artwork.author} </p>
+                  <p>Owner:{artwork.owner} </p>
                 </div>
                 <div className="single-shop-price">
                   <p>
-                    {t("price")}:<span>$180{Artwork.Price}</span>
+                    {t("price")}:<span>{artwork.price}</span>
                   </p>
                 </div>
-                {/* <div className="single-shop-page-btn">
-                  <button className="gauto-btn">
-                    <FaShoppingCart /> Order
-                  </button>
-                  <button className="gauto-btn" onClick={handleClick}>
-                    <FaShoppingCart />Order
-                    {artwork.status}
-                  </button>
-
-                  <ul>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaFacebook />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaTwitter />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaInstagram />
-                      </Link>
-                    </li>
-                  </ul>
-                </div> */}
                 <div className="single-shop-page-btn">
-                  <Link to="/cart" className="gauto-btn">
-                    <FaShoppingCart /> {t("add_to_cart")}
+                  <Link to="/cart" className="gauto-btn" onClick={onClick}>
+                    <FaShoppingCart /> {artwork.status}
                   </Link>
-                  <ul>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaFacebook />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaTwitter />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/" onClick={onClick}>
-                        <FaInstagram />
-                      </Link>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </Col>
-          </Row>
-        </Container>
-      </section>
-      <section className="gauto-related-products section_b_70">
-        <Container>
-          <Row>
-            <Col md={12}>
-              <div className="site-heading">
-                <h4>{t("products")}</h4>
-                <h2>{t("related_products")}</h2>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            {/* {userproduct.map(product => {
-              return (
-                <Col key={product.ArtworkId} lg={3} sm={6}>
-                  <div className="product-item">
-                    <div className="product-image">
-                      <Link to={`/product-single/${product.ArtworkId}`}>
-                        <img src={product1} alt="product 1" />
-                      </Link>
-                    </div>
-                    <div className="product-text">
-                      <div className="product-title">
-                        <h3>
-                          <Link to={`/product-single/${product.ArtworkId}`}>{product.ArtworkName}</Link>
-                        </h3>
-                        <p>${product.price}</p>
-                      </div>
-                      <div className="product-action">
-                        <Link to="/product-single">
-                          <FaShoppingCart />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              );
-            })} */}
-
-
-            {/* <Col lg={3} sm={6}>
-              <div className="product-item">
-                <div className="product-image">
-                  <Link to="/product-single">
-                    <img src={product2} alt="product 1" />
-                  </Link>
-                </div>
-                <div className="product-text">
-                  <div className="product-title">
-                    <h3>
-                      <Link to="/product-single">car battery</Link>
-                    </h3>
-                    <p>$180.00</p>
-                  </div>
-                  <div className="product-action">
-                    <Link to="/product-single">
-                      <FaShoppingCart />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={3} sm={6}>
-              <div className="product-item">
-                <div className="product-image">
-                  <Link to="/product-single">
-                    <img src={product3} alt="product 1" />
-                  </Link>
-                </div>
-                <div className="product-text">
-                  <div className="product-title">
-                    <h3>
-                      <Link to="/product-single">steering wheel</Link>
-                    </h3>
-                    <p>$132.00</p>
-                  </div>
-                  <div className="product-action">
-                    <Link to="/product-single">
-                      <FaShoppingCart />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={3} sm={6}>
-              <div className="product-item">
-                <div className="product-image">
-                  <Link to="/product-single">
-                    <img src={product2} alt="product 1" />
-                  </Link>
-                </div>
-                <div className="product-text">
-                  <div className="product-title">
-                    <h3>
-                      <Link to="/product-single">car battery</Link>
-                    </h3>
-                    <p>$132.00</p>
-                  </div>
-                  <div className="product-action">
-                    <Link to="/product-single">
-                      <FaShoppingCart />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Col> */}
           </Row>
         </Container>
       </section>
