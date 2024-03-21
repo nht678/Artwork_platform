@@ -17,13 +17,16 @@ import axios from "axios";
 const ProductDetails = () => {
   const { t } = useTranslation();
 
-  const onClick = (e) => {
+  const onClick = (e, artwork) => {
     e.preventDefault();
     try {
+      if (artwork.status != "Available") {
+        return;
+      }
       let response = axios.post(
         `https://localhost:7130/artworks/order/${artwork.idArtwork}`
       );
-      console.log(response);
+      setArtwork({ ...artwork, status: "Sold out" });
     } catch (error) {
       console.error("Error fetching product data:", error);
     }
@@ -67,11 +70,11 @@ const ProductDetails = () => {
               <div className="product-details-text">
                 <h3>{artwork.name}</h3>
                 <div className="single-pro-page-para">
-                  <p>{artwork.Des}</p>
+                  <p>{artwork.Des}Bức tranh trước mắt là một tác phẩm nghệ thuật đầy màu sắc và sức sống. Trên bề mặt, nó là một khung cảnh tĩnh lặng, nhưng khi nhìn kỹ hơn, mọi chi tiết như bắt đầu hiện ra. Màu sắc phong phú và sắc nét, từ các tông màu ấm áp như vàng và đỏ đến các gam màu mát mẻ như xanh dương và xanh lá cây, tạo nên một sự pha trộn hài hòa và tinh tế. Ánh sáng phản chiếu một cách tự nhiên trên các đối tượng, tạo ra các hiệu ứng bóng râm sâu và động đậy.</p>
                 </div>
                 <div className="single-shop-price">
                   <p>Author: {artwork.author} </p>
-                  <p>Owner:{artwork.owner} </p>
+                  {/* <p>Owner:{artwork.owner} </p> */}
                 </div>
                 <div className="single-shop-price">
                   <p>
@@ -79,8 +82,8 @@ const ProductDetails = () => {
                   </p>
                 </div>
                 <div className="single-shop-page-btn">
-                  <Link to="/cart" className="gauto-btn" onClick={onClick}>
-                    <FaShoppingCart /> {artwork.status}
+                  <Link to="/cart" className="gauto-btn" onClick={(e) => onClick(e, artwork)}>
+                    <FaShoppingCart /> {artwork.status == "Available" ? "Order" : "Sold out"}
                   </Link>
                 </div>
               </div>

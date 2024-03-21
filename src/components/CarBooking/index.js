@@ -19,9 +19,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 
-import img1 from "../../img/booking.jpg";
-import img2 from "../../img/master-card.jpg";
-import img3 from "../../img/paypal.jpg";
+import img1 from "./ArtistRent.jpg";
 
 import "./style.css";
 
@@ -51,7 +49,7 @@ const CarBooking = () => {
             <Col lg={6}>
               <div className="car-booking-right">
                 <p className="rental-tag">{t("rental")}</p>
-                <h3>mercedes S-class</h3>
+                <h3>Thanh Nhật</h3>
                 <div className="price-rating">
                   <div className="price-rent">
                     <h4>

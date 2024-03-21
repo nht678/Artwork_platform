@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 
-import img1 from "../../img/toyota-offer-2.png";
+import img1 from "./aboutdetail.jpg";
 
 import "./style.css";
 
@@ -20,7 +20,7 @@ const Promo = () => {
         <Row className="align-items-center">
           <Col md="6">
             <div className="promo-box-left">
-              <img src={img1} alt="promo car" />
+              <img src={img1} alt="promo car" style={{ width: '330px', height: '220px' }} />
             </div>
           </Col>
           <Col md="6">

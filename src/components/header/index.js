@@ -14,7 +14,7 @@ import { CgProfile } from "react-icons/cg";
 import MobileMenu from "../../components/MobileMenu";
 
 import Logo from "../../img/logo.png";
-import globe from "../../img/globe.png";
+import globe from "./vietnam.jpg";
 import clock from "../../img/clock.png";
 import "flag-icon-css/css/flag-icons.min.css";
 import "./style.css";
@@ -108,12 +108,14 @@ const Header = () => {
                   <Dropdown.Menu>
                     {profile.map(({ name }) => (
                       <Dropdown.Item key={name}>
-                        {/* name === "Profile" ? "/profile" : "/shop" */}
-                        <Link to="/profile">
-                          {name}
-                        </Link>
+                        {name === "Profile" ? (
+                          <Link to="/profile">{name}</Link>
+                        ) : (
+                          <Link to="/shop">{name}</Link>
+                        )}
                       </Dropdown.Item>
                     ))}
+
                   </Dropdown.Menu>
                 </Dropdown>
 
@@ -139,7 +141,7 @@ const Header = () => {
               <div className="header-promo">
                 <div className="single-header-promo">
                   <div className="header-promo-icon">
-                    <img src={globe} alt="globe" />
+                    <img src={globe} alt="globe" style={{ width: '40px', height: '40px' }} />
                   </div>
                   <div className="header-promo-info">
                     <h3>HO CHI MINH, VIETNAM</h3>

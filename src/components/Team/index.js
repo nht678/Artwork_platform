@@ -9,10 +9,8 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 
-import img1 from "../../img/driver-1.jpg";
-import img2 from "../../img/driver-2.jpg";
-import img3 from "../../img/driver-4.jpg";
-import img4 from "../../img/driver-3.jpg";
+import img1 from "./ArtistRent.jpg";
+
 
 import "./style.css";
 
@@ -77,7 +75,7 @@ const Team = () => {
           <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
-                <img src={img2} alt="driver 1" />
+                <img src={img1} alt="driver 1" />
                 <div className="hover">
                   <ul className="social-icon">
                     <li>
@@ -116,7 +114,7 @@ const Team = () => {
           <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
-                <img src={img3} alt="driver 1" />
+                <img src={img1} alt="driver 1" />
                 <div className="hover">
                   <ul className="social-icon">
                     <li>
@@ -155,7 +153,7 @@ const Team = () => {
           <Col lg={3} sm={6}>
             <div className="single-driver">
               <div className="driver-image">
-                <img src={img4} alt="driver 1" />
+                <img src={img1} alt="driver 1" />
                 <div className="hover">
                   <ul className="social-icon">
                     <li>

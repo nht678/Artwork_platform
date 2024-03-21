@@ -148,39 +148,9 @@ const AccountUser = () => {
             </div>
 
             <Row>
-                <div className="col-xl-3 ">
-                    <div className="card h-80 ">
-                        <div className="card-header">Ảnh đại diện</div>
-                        <div className="card-body text-center">
-                            <div className="avatar">
-                                <div className="img-account-profile rounded-circle ">
-                                    {/* {showDefaultAvatar ? (
-                                        <img
-                                            src={userData?.avatar ? userData.avatar : logo}
-                                            alt="Default Avatar"
-                                        />
-                                    ) : (
-                                        <img
-                                            src={URL.createObjectURL(avatar1)}
-                                            alt="Selected Avatar"
-                                        />
-                                    )} */}
-
-                                    <img
-                                        src={logo}
-                                        alt="Selected Avatar"
-                                    />
-                                </div>
-                                <input type="file" onChange={handlePreviewAvatar} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <div className="card h-95">
-                        <div className="card-body">
-                            <div className="row gutters">
-                                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"></div>
+                        <div className="card-body row gutters">
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div className="form-group">
                                         <label for="userName">Họ tên</label>
@@ -227,7 +197,6 @@ const AccountUser = () => {
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div className="form-group">
                                         <label for="phone">Số điện thoại</label>
-
                                         <input
                                             type="text"
                                             className="form-control"
@@ -245,30 +214,6 @@ const AccountUser = () => {
                                         )}
                                     </div>
                                 </div>
-                                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div className="form-group">
-                                        <label for="Dob">Ngày sinh</label>
-
-                                        <input
-                                            type="datetime-local"
-                                            className="form-control"
-                                            id="dob"
-                                            value={userData?.dob}
-                                            onBlur={(e) => handleInputBlur("dob", e.target.value)}
-                                            onChange={(e) =>
-                                                setUserData({ ...userData, dob: e.target.value })
-                                            }
-                                        />
-                                        {!inputStates.dob && (
-                                            <small className="form-text text-danger">
-                                                Cần có ngày sinh.
-                                            </small>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row gutters">
-                                <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"></div>
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div className="form-group">
                                         <label for="Gender">Giới tính</label>
@@ -296,60 +241,25 @@ const AccountUser = () => {
                                     </div>
                                 </div>
                                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    {showPasswordForm && (
-                                        <ChangePassword
-                                            onCancelPasswordForm={() => setShowPasswordForm(false)}
-                                            onPasswordChanged={handlePasswordChanged} // Kiểm tra xem hàm onPasswordChanged đã được truyền vào ChangePassword chưa
-                                        />
-                                    )}
                                     <div className="form-group">
-                                        <label>Mật khẩu</label>
-                                        <div className="d-flex">
-                                            <input
-                                                className="form-control"
-                                                id="address"
-                                                rows="3"
-                                                type="text"
-                                                readOnly
-                                                value="********"
-                                            />
-
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary"
-                                                onClick={() => setShowPasswordForm(true)}
-                                            >
-                                                Thay đổi
-                                            </button>
-                                        </div>
-                                        {passwordChanged && (
-                                            <div className="text-success">
-                                                Mật khẩu của bạn đã được thay đổi.
-                                            </div>
+                                        <label for="Address">Địa chỉ</label>
+                                        <textarea
+                                            className="form-control"
+                                            id="address"
+                                            rows="3"
+                                            value={userData?.address}
+                                            onBlur={(e) => handleInputBlur("address", e.target.value)}
+                                            onChange={(e) =>
+                                                setUserData({ ...userData, address: e.target.value })
+                                            }
+                                        ></textarea>
+                                        {!inputStates.address && (
+                                            <small className="form-text text-danger">
+                                                Cần có địa chỉ.
+                                            </small>
                                         )}
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div className="form-group">
-                                    <label for="Address">Địa chỉ</label>
-                                    <textarea
-                                        className="form-control"
-                                        id="address"
-                                        rows="3"
-                                        value={userData?.address}
-                                        onBlur={(e) => handleInputBlur("address", e.target.value)}
-                                        onChange={(e) =>
-                                            setUserData({ ...userData, address: e.target.value })
-                                        }
-                                    ></textarea>
-                                    {!inputStates.address && (
-                                        <small className="form-text text-danger">
-                                            Cần có địa chỉ.
-                                        </small>
-                                    )}
-                                </div>
-                            </div>
                             <div className="row gutters">
                                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div className="text-right">

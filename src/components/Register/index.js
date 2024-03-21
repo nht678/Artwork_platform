@@ -18,43 +18,19 @@ const Register = () => {
     email: "",
     password: "",
     username: "",
+    gender: "Male",
     confirmPassword: "",
   });
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const SubmitHandler = (e) => {
-  //   e.preventDefault();
-  //   UserServices.registerUser(formData)
-  //     .then((resRegister) => {
-  //       console.log("resRegister", resRegister);
-  //       const message = resRegister.data.message;
-  //       dispatch(actUserRegister(message))
-  //       if (message == "message 1") {
-  //         navigate("/login");
-  //       } else {
-  //         navigate("/register");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log("Login or password failed", error);
-  //       if (error.response) {
-  //         toast.error("Server error:", error.response.data);
-  //       } else if (error.request) {
-  //         toast.error("Network error:", error.request);
-  //       } else {
-  //         toast.error("Error:", error.message);
-  //       }
-  //     });
-  // };
-
   const SubmitHandler = (e) => {
     e.preventDefault();
 
     // Kiểm tra mật khẩu và mật khẩu xác nhận có khớp nhau không
     if (formData.password !== formData.confirmPassword) {
-      toast.error("Password and Confirm Password do not match.");
+     alert("Password and confirm password do not match.");
       return; // Dừng quá trình đăng ký nếu mật khẩu không khớp
     }
 
@@ -62,23 +38,23 @@ const Register = () => {
       .then((resRegister) => {
         console.log("resRegister", resRegister);
         // Kiểm tra mã trạng thái của phản hồi
-        if (resRegister.status === 201) {
+        if (resRegister.status === 200) {
           // Nếu đăng ký thành công, chuyển hướng đến trang đăng nhập
+          alert("Registration successful.");
           navigate("/login");
-          toast.success("Registration successful.");
         } else {
           // Nếu có lỗi xảy ra, thông báo cho người dùng
-          toast.error("Registration failed.");
+         alert("Registration failed.");
         }
       })
       .catch((error) => {
         console.log("Registration failed", error);
         if (error.response) {
-          toast.error("Server error:", error.response.data);
+         alert("Server error:", error.response.data);
         } else if (error.request) {
-          toast.error("Network error:", error.request);
+         alert("Network error:", error.request);
         } else {
-          toast.error("Error:", error.message);
+         alert("Error:", error.message);
         }
       });
   };

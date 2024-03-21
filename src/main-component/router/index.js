@@ -124,6 +124,7 @@ const AllRoute = () => {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/shop" element={<MainProduct />} />
           {/* test */}
           <Route path="/users" element={<UserScreen />} />
           {/* <Route path="/dashboard" element={<DashBoardScreen />} />

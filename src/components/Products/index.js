@@ -4,13 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Container, Row, Col } from "react-bootstrap";
 import { FaAngleDoubleRight, FaSearch, FaShoppingCart } from "react-icons/fa";
 
-import img1 from "../../img/cart-1.png";
-import img2 from "../../img/cart-2.jpg";
-import product1 from "../../img/product-1.jpg";
-import product2 from "../../img/product-2.jpg";
-import product3 from "../../img/product-3.jpg";
-import product4 from "../../img/product-4.jpg";
-import product5 from "../../img/product-5.jpg";
+
+import product1 from "./tranhmau.jpg";
+
 
 import "./style.css";
 
@@ -71,7 +67,7 @@ const Product = () => {
 
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory(categoryName);
-    setArtworkParams({ ...artworkParams, categoryName: categoryName });
+    setArtworkParams({ ...artworkParams, categoryName: categoryName, page: 1 });
     fetchProducts();
   };
 
@@ -113,76 +109,6 @@ const Product = () => {
                       </Link>
                     </li>
                   ))}
-                </ul>
-              </div>
-              <div className="sidebar-widget">
-                <h3>{t("top_selling")}</h3>
-                <ul className="top-products">
-                  <li>
-                    <div className="recent-img">
-                      <Link to="/product-single">
-                        <img src={img1} alt="recent" />
-                      </Link>
-                    </div>
-                    <div className="recent-text">
-                      <h4>
-                        <Link to="/product-single">disk break</Link>
-                      </h4>
-                      <p>$78.60</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="recent-img">
-                      <Link to="/product-single">
-                        <img src={img2} alt="recent" />
-                      </Link>
-                    </div>
-                    <div className="recent-text">
-                      <h4>
-                        <Link to="/product-single">Shock Absorber</Link>
-                      </h4>
-                      <p>$39.40</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="recent-img">
-                      <Link to="/product-single">
-                        <img src={img1} alt="recent" />
-                      </Link>
-                    </div>
-                    <div className="recent-text">
-                      <h4>
-                        <Link to="/product-single">suspension</Link>
-                      </h4>
-                      <p>$52.50</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="recent-img">
-                      <Link to="/product-single">
-                        <img src={img1} alt="recent" />
-                      </Link>
-                    </div>
-                    <div className="recent-text">
-                      <h4>
-                        <Link to="/product-single">turbo oil</Link>
-                      </h4>
-                      <p>$78.60</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="recent-img">
-                      <Link to="/product-single">
-                        <img src={img2} alt="recent" />
-                      </Link>
-                    </div>
-                    <div className="recent-text">
-                      <h4>
-                        <Link to="/product-single">Shock Absorber</Link>
-                      </h4>
-                      <p>$39.40</p>
-                    </div>
-                  </li>
                 </ul>
               </div>
             </div>

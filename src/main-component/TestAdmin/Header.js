@@ -49,7 +49,7 @@ const Header = () => {
                             placeholder="Search term"
                         />
                         <button className="btn btn-light bg" type="button">
-                            <i class="ri-search-line"></i>
+                            <i className="ri-search-line"></i>
                         </button>
                     </div>
                     <datalist id="search_terms">

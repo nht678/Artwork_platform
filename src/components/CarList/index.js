@@ -16,11 +16,8 @@ import {
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 
-import img2 from "../../img/nissan-offer.png";
-import img3 from "../../img/audi-offer.png";
-import img4 from "../../img/bmw-offer.png";
-import img5 from "../../img/toyota-offer-2.png";
-import img6 from "../../img/marcedes-offer.png";
+import img2 from "./ArtistRent.jpg";
+
 
 import "./style.css";
 

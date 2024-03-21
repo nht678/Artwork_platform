@@ -78,7 +78,7 @@ const Sidebar = () => {
                                 className="menu-link"
                                 to="/shops"
                             >
-                                <i class="icon ri-shopping-cart-fill"></i>
+                                <i className="icon ri-shopping-cart-fill"></i>
                                 <span className="text">Cửa Hàng</span>
                             </NavLink>
                         </li>

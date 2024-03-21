@@ -13,6 +13,6 @@ export const UserServices = {
     });
   },
   registerUser: (form) => {
-    return API.post("/authentication/register-user", form);
+    return API.post("/register", form);
   },
 };

@@ -277,10 +277,8 @@ input#timepicker {
 }
 
 .pagination {
-  margin-top: 20px;
   text-align: center;
-  float: none;
-  display: inline-block;
+  align-items: center;
 }
 
 .pagination li {
