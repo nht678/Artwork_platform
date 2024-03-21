@@ -87,7 +87,11 @@ import UserScreen from '../TestAdmin/UserScreen';
 import MainProduct from '../Creator/MainProduct'
 import ProductEditScreen from '../Creator/ProductEditScreen'
 import AddProduct from "../Creator/AddProduct"
+//admin
 
+import AdminPage from '../AdminPage';
+import User from "../../components/Admin/User";
+import Subscription from "../../components/Admin/Subcription";
 // Layouts
 // import DashboardLayout from "../AdminPage/src/layouts/dashboard";
 
@@ -168,6 +172,18 @@ const AllRoute = () => {
               </>
             )
           } */}
+          {/* Tuyến đường cho admin với Lazy Loading và Suspense */}
+          <Route path="/admin/*" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Routes>
+                <Route index element={<AdminPage />} />
+                <Route path="users" element={<User />} />
+                <Route path="subscription" element={<Subscription />} />
+
+              </Routes>
+            </Suspense>
+          } />
+
         </Routes>
       </Router>
     </div>

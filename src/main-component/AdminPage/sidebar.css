@@ -1,0 +1,25 @@
+.sidebar {
+    background-color: #f8f9fa; /* Thay đổi màu nền */
+    color: #6c757d; /* Thay đổi màu chữ */
+  }
+  
+  .site-logo a {
+    margin-bottom: 20px; /* Thay đổi khoảng cách giữa logo và tiêu đề */
+  }
+  
+  h1 {
+    font-size: 28px; /* Thay đổi kích thước tiêu đề */
+  }
+  
+  ul li {
+    margin-bottom: 15px; /* Thay đổi khoảng cách giữa các mục trong danh sách */
+  }
+  
+  a {
+    text-decoration: none; /* Loại bỏ gạch chân dưới link */
+  }
+  
+  a:hover {
+    color: #007bff; /* Thay đổi màu chữ khi di chuột qua link */
+  }
+  
